@@ -11,7 +11,7 @@ const port = process.env.PORT || 5001;
 
 // Allow requests from any origin
 const corsOptions = {
-  origin: "http://localhost:3001", // Replace with your client's origin
+  origin: "http://localhost:3000", // Replace with your client's origin
   credentials: true, // Allow credentials like cookies to be sent
 };
 app.use(cors(corsOptions));
