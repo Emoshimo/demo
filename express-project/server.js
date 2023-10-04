@@ -9,8 +9,21 @@ const app = express();
 
 const port = process.env.PORT || 5000;
 
+const allowedOrigins = ["http://localhost:3000/"];
+
 // Allow requests from any origin
-app.use(cors());
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // Check if the origin is allowed or is undefined (e.g., for same-origin requests)
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+  })
+);
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -23,6 +36,6 @@ app.use("/api/contacts", require("./routes/contactRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
 app.use(errorHandler);
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
