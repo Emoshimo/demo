@@ -9,24 +9,26 @@ const app = express();
 
 const port = process.env.PORT || 5000;
 
-const allowedOrigins = ["https://euphonious-basbousa-bb0168.netlify.app/"];
-
 // Allow requests from any origin
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      // Check if the origin is allowed or is undefined (e.g., for same-origin requests)
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-  })
-);
+app.use(cors());
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+app.use(function (req, res, next) {
+  // res.header("Access-Control-Allow-Origin", "*");
+  const allowedOrigins = [
+    "http://localhost:3000",
+    "https://spectacular-tarsier-77be12.netlify.app/",
+    "https://gamebrag.onrender.com",
+  ];
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  res.header("Access-Control-Allow-credentials", true);
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, UPDATE");
   next();
 });
 
