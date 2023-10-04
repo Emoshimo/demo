@@ -7,10 +7,14 @@ connectDb();
 
 const app = express();
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
 
 // Allow requests from any origin
-app.use(cors());
+const corsOptions = {
+  origin: "http://localhost:3001", // Replace with your client's origin
+  credentials: true, // Allow credentials like cookies to be sent
+};
+app.use(cors(corsOptions));
 
 app.use(function (req, res, next) {
   // res.header("Access-Control-Allow-Origin", "*");
@@ -38,6 +42,6 @@ app.use("/api/contacts", require("./routes/contactRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
 app.use(errorHandler);
 
-app.listen(port, () => {
+app.listen(() => {
   console.log(`Server running on port ${port}`);
 });
