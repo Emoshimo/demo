@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:5001/api/users",
+  baseURL: "https://demo-mi66.onrender.com/api/users",
 });
 
 interface User {

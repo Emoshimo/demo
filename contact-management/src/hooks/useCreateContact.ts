@@ -18,7 +18,7 @@ const useCreateContact = (accessToken: string) => {
     try {
       // Make API call to create the contact using contactData
       const response = await axios.post(
-        "http://localhost:5001/api/contacts",
+        "https://demo-mi66.onrender.com/api/contacts",
         contactData,
         {
           headers: {
