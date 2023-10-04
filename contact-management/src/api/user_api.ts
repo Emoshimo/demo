@@ -13,7 +13,9 @@ interface User {
 
 export const registerUser = async (userData: User): Promise<any> => {
   try {
-    const response: AxiosResponse = await api.post("/register", userData);
+    const response: AxiosResponse = await api.post("/register", userData, {
+      withCredentials: false,
+    });
     return response;
   } catch (err) {
     throw new Error("Error");
