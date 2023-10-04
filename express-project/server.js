@@ -9,7 +9,7 @@ const app = express();
 
 const port = process.env.PORT || 5000;
 
-const allowedOrigins = ["http://localhost:3000/"];
+const allowedOrigins = ["https://euphonious-basbousa-bb0168.netlify.app/"];
 
 // Allow requests from any origin
 app.use(
