@@ -2,6 +2,7 @@ import axios, { AxiosResponse } from "axios";
 
 const api = axios.create({
   baseURL: "https://demo-mi66.onrender.com/api/users",
+  withCredentials: false,
 });
 
 interface User {

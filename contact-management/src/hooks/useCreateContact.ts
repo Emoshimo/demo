@@ -24,6 +24,7 @@ const useCreateContact = (accessToken: string) => {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
+          withCredentials: false,
         }
       );
       // Handle the response if needed

@@ -12,6 +12,11 @@ const port = process.env.PORT || 5000;
 // Allow requests from any origin
 app.use(cors());
 
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  next();
+});
+
 // to parce json formatted data that is passed within body
 app.use(express.json());
 app.use("/api/contacts", require("./routes/contactRoutes"));

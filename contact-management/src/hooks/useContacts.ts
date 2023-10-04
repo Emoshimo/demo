@@ -13,6 +13,7 @@ const useContacts = (accessToken: string) => {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
+          withCredentials: false,
         }
       );
       if (response?.data) {

@@ -3,6 +3,7 @@ import { UpdateContactProps } from "../interface/contact.interface";
 
 const api = axios.create({
   baseURL: "https://demo-mi66.onrender.com/api/contacts/",
+  withCredentials: false,
 });
 
 export const deleteContact = async (id: string, token: string) => {
